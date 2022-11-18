@@ -13,7 +13,7 @@ def make_group(users, groups):
         user = random.choice(users)
         group = choice_group(groups)
         if add_user_in_group(group, user):
-            delete_user_in_users(users, user)
+            users.remove(user)
 
 def choice_group(groups):
     numbers = [i for i in range(GROUP_NUMBER)]
@@ -28,16 +28,13 @@ def add_user_in_group(group, user):
         return True
     return False
 
-def delete_user_in_users(users, user):
-    users.remove(user)
-
 def make_line():
     print("---------------------------------------")
 
 def show_info(groups):
     make_line()
     for i in range(len(groups)):
-        print("A조:" if i == 0 else "B조:", end=' ')
+        print(chr(65+i) + "조:", end=' ')
         show_group(groups[i])
         make_set(groups[i])
         make_line()
